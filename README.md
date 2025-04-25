@@ -1,5 +1,5 @@
-# Virtual-Assistant-Cyra-
-import speech_recognition as sr
+# Virtual-Assistant-Jarvis-
+mport speech_recognition as sr
 import webbrowser
 import pyttsx3
 import datetime
@@ -7,13 +7,6 @@ import wikipedia
 import pywhatkit
 import tkinter as tk
 import threading
-from googletrans import Translator
-
-translator = Translator()
-
-def speak(text):
-    translated = translator.translate(text, dest='hi')
-    speak(translated.text)
 
 # Initialize TTS engine
 engine = pyttsx3.init('sapi5')
@@ -32,14 +25,14 @@ def wishMe():
         speak("Good Afternoon Kopal Maam!")
     else:
         speak("Good Evening Kopal Maam!")
-    speak("I Am Cyra, Please tell me how may I help you")
+    speak("I Am Jarvis, Please tell me how may I help you")
 
 def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         status_label.config(text="Listening...")
         r.pause_threshold = 1
-        r.energy_threshold = 100
+        r.energy_threshold = 2
         audio = r.listen(source)
     try:
         status_label.config(text="Recognizing...")
@@ -80,9 +73,9 @@ def runAssistant():
             time = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Ma'am, the time is {time}")
             status_label.config(text=f"Time: {time}")
-        
+
         elif 'who are you' in query:
-            speak("I am Jarvis, your personal assistant.")
+            speak("I am Cyra, your personal assistant.")
             status_label.config(text="I am Jarvis, your personal assistant.")
 
         elif 'play music' in query or 'play song' in query:
@@ -96,7 +89,7 @@ def runAssistant():
             speak("Shutting down. Goodbye Ma'am.")
             break
 
-        elif 'Cyra' in query:
+        elif 'Jarvis' in query or 'are you there Jarvis' in query:
             speak("Yes, I am listening...")
             takeCommand()
 
@@ -110,10 +103,10 @@ root.title("Jarvis Voice Assistant")
 root.geometry("400x300")
 root.resizable(False, False)
 
-title = tk.Label(root, text="Cyra Voice Assistant", font=("Arial", 18, "bold"))
+title = tk.Label(root, text="Jarvis Voice Assistant", font=("Arial", 18, "bold"))
 title.pack(pady=10)
 
-status_label = tk.Label(root, text="Click 'Start' to activate Jarvis.", wraplength=350, font=("Arial", 12))
+status_label = tk.Label(root, text="Click 'Start' to activate Cyra.", wraplength=350, font=("Arial", 12))
 status_label.pack(pady=20)
 
 start_button = tk.Button(root, text="Start", font=("Arial", 14), command=start_threaded_assistant)
