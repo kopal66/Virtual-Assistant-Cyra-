@@ -19,11 +19,11 @@ def speak(audio):
 def wishMe():
     hour = int(datetime.datetime.now().hour)
     if 0 <= hour < 12:
-        speak("Good Morning Devashish sir!")
+        speak("Good Morning Kopal Maam!")
     elif 12 <= hour < 18:
-        speak("Good Afternoon Devashish sir!")
+        speak("Good Afternoon Kopal Maam!")
     else:
-        speak("Good Evening Devashish sir!")
+        speak("Good Evening Kopal Maam!")
     speak("I Am Jarvis, Please tell me how may I help you")
 
 def takeCommand():
@@ -31,7 +31,7 @@ def takeCommand():
     with sr.Microphone() as source:
         status_label.config(text="Listening...")
         r.pause_threshold = 1
-        r.energy_threshold = 2
+        r.energy_threshold = 100
         audio = r.listen(source)
     try:
         status_label.config(text="Recognizing...")
