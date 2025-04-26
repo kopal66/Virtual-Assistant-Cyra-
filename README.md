@@ -32,7 +32,7 @@ def takeCommand():
     with sr.Microphone() as source:
         status_label.config(text="Listening...")
         r.pause_threshold = 1
-        r.energy_threshold = 2
+        r.energy_threshold = 100
         audio = r.listen(source)
     try:
         status_label.config(text="Recognizing...")
@@ -75,7 +75,7 @@ def runAssistant():
             status_label.config(text=f"Time: {time}")
 
         elif 'who are you' in query:
-            speak("I am Cyra, your personal assistant.")
+            speak("I am Jarvis, your personal assistant.")
             status_label.config(text="I am Jarvis, your personal assistant.")
 
         elif 'play music' in query or 'play song' in query:
@@ -89,7 +89,7 @@ def runAssistant():
             speak("Shutting down. Goodbye Ma'am.")
             break
 
-        elif 'Jarvis' in query or 'are you there Jarvis' in query:
+        elif 'Jarvis' in query or 'are you there' in query:
             speak("Yes, I am listening...")
             takeCommand()
 
@@ -106,7 +106,7 @@ root.resizable(False, False)
 title = tk.Label(root, text="Jarvis Voice Assistant", font=("Arial", 18, "bold"))
 title.pack(pady=10)
 
-status_label = tk.Label(root, text="Click 'Start' to activate Cyra.", wraplength=350, font=("Arial", 12))
+status_label = tk.Label(root, text="Click 'Start' to activate Jarvis.", wraplength=350, font=("Arial", 12))
 status_label.pack(pady=20)
 
 start_button = tk.Button(root, text="Start", font=("Arial", 14), command=start_threaded_assistant)
